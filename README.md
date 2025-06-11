@@ -68,7 +68,7 @@ sudo apt install graphviz
 # macOS
 brew install graphviz
 
-# Windows (use choco or installer from [official site](https://graphviz.org/download/))
+# Windows (use choco or installer from [official site]([url](https://graphviz.org/download/)))
 choco install graphviz
 ```
 
