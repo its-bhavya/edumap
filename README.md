@@ -6,7 +6,6 @@
 - **Graphviz** for mindmap generation
 - **Streamlit** for an interactive UI
 
----
 
 ## Demo
 
