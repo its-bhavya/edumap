@@ -1,33 +1,28 @@
-from dotenv import load_dotenv
-import os
+from fastapi import FastAPI
+from pydantic import BaseModel
 import dspy
+import os
 import json
+import re
+from dotenv import load_dotenv
 
 load_dotenv()
 api_key = os.getenv("GOOGLE_API_KEY")
 
+# Configure LM once, in this service
 lm = dspy.LM("gemini/gemini-2.0-flash", api_key=api_key)
 dspy.configure(lm=lm)
 
-import dspy
-
+# DSPy definitions
 class StructureExtractionSignature(dspy.Signature):
-    """Extracts a mindmap structure from a transcript of an audio. The mindmap can have multiple layers of hierarchy, condensing information into easy to understand views.
-"""
-
     transcript = dspy.InputField(desc="The full transcript of a lecture or explanation.")
-
-    central_topic = dspy.OutputField(desc="The central concept of the transcript (e.g., 'Photosynthesis').")
-
+    central_topic = dspy.OutputField(desc="The central concept of the transcript.")
     subtopics = dspy.OutputField(
-        desc="""
-    A raw JSON list where each subtopic has:
-    - 'title': string
-    - 'description': string
-    - optional 'children': a list of similar objects
-    """
+        desc="""A raw JSON list where each subtopic has:
+        - 'title': string
+        - 'description': string
+        - optional 'children': a list of similar objects"""
     )
-
 
 class MindmapExtractor(dspy.Module):
     def __init__(self):
@@ -37,20 +32,31 @@ class MindmapExtractor(dspy.Module):
     def forward(self, transcript: str):
         return self.teleprompt(transcript=transcript)
 
+# FastAPI
+app = FastAPI()
 extractor = MindmapExtractor()
-with open("data\\transcripts\\ad8e0416-ef1c-4e18-92de-e4a895812abe.txt", "r") as french_revolution:
-    transcript = french_revolution.read()
 
-result = extractor.forward(transcript=transcript)
-import re
+class TranscriptRequest(BaseModel):
+    transcript: str
 
-def clean_json_field(field: str):
-    field = re.sub(r"^```(?:json)?\n?", "", field.strip())
-    field = re.sub(r"\n?```$", "", field)
-    return json.loads(field)
+@app.post("/extract")
+def extract_json(req: TranscriptRequest):
+    try:
+        result = extractor.forward(transcript=req.transcript)
 
-subtopics = clean_json_field(result.subtopics)
-data = {"central_topic":result.central_topic, "subtopics":subtopics}
+        def clean_json_field(field: str):
+            field = re.sub(r"^```(?:json)?\n?", "", field.strip())
+            field = re.sub(r"\n?```$", "", field)
+            return json.loads(field)
 
-with open(f"data\\json\\french_revolution.json", "w+") as ob:
-    json.dump(data, ob, indent=2)
+        subtopics = clean_json_field(result.subtopics)
+        data = {"central_topic": result.central_topic, "subtopics": subtopics}
+
+        os.makedirs("data/json", exist_ok=True)
+        path = f"data/json/{result.central_topic}.json"
+        with open(path, "w", encoding="utf-8") as f:
+            json.dump(data, f, indent=2)
+
+        return {"success": True, "path": path, "data": data}
+    except Exception as e:
+        return {"success": False, "error": str(e)}
