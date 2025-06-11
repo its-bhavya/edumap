@@ -8,6 +8,11 @@
 
 
 ## Demo
+![Screenshot 2025-06-11 153336](https://github.com/user-attachments/assets/230fe287-ec86-423e-94ba-6c24cebec15b)
+
+![Screenshot 2025-06-11 153413](https://github.com/user-attachments/assets/a6f232de-ca08-4b40-96ba-92b2fe5499f6)
+
+![Screenshot 2025-06-11 153459](https://github.com/user-attachments/assets/15a5b36e-844f-4971-9090-68de4f1dabd1)
 
 
 ## Features
