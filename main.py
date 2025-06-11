@@ -2,6 +2,11 @@ import streamlit as st
 import requests
 from app.utils.transcriber import transcribe, save_to_data
 from app.utils.mindmap_generation import generate_mindmap
+import time
+import os
+import tempfile
+
+os.environ["STREAMLIT_DISABLE_WATCHDOG_WARNINGS"] = "1"
 
 st.title("Edumap")
 
@@ -36,12 +41,19 @@ if file:
     st.audio(file, format='audio/wav')
     file_name = file.name
     if st.button("Transcribe"):
+        with tempfile.NamedTemporaryFile(delete=False, suffix=".wav") as tmp_file:
+            tmp_file.write(uploaded_file.read())
+            audio_path = tmp_file.name
+        
         import torch
-        transcription = transcribe(file)
+        start = time.time()
+        transcription = transcribe(audio_path)
+        end = time.time()
+        st.write(end-start)
         st.markdown("### Audio Transcript")
         st.write(transcription)
         save_to_data(file_name, transcription)
-
+        
 if text_file:
     transcription = text_file
     st.markdown("### Entered text")

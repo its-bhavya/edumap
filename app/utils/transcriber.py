@@ -5,28 +5,9 @@ import tempfile
 
 model = whisper.load_model("tiny")  
 
-def split_audio(path, chunk_length_ms=30_000):
-    audio = AudioSegment.from_file(path)
-    chunks = []
-    for i in range(0, len(audio), chunk_length_ms):
-        chunk = audio[i:i + chunk_length_ms]
-        chunk_path = f"temp_chunk_{i // chunk_length_ms}.wav"
-        chunk.export(chunk_path, format="wav")
-        chunks.append(chunk_path)
-    return chunks
-
-def transcribe_chunks(chunk_paths):
-    full_transcript = ""
-    for chunk_path in chunk_paths:
-        result = model.transcribe(chunk_path)
-        full_transcript += result["text"].strip() + " "
-        os.remove(chunk_path)  
-    return full_transcript.strip()
-
 def transcribe(audio_path):
-    chunks = split_audio(audio_path)
-    transcript = transcribe_chunks(chunks)
-    return transcript
+    result = model.transcribe(audio_path)
+    return result['text']
 
 def save_to_data(file_name, text):
     os.makedirs("data/transcripts", exist_ok=True)
