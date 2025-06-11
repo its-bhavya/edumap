@@ -1,0 +1,49 @@
+{
+  "central_topic": "Mosquito-borne disease surveillance and prevention using a novel, low-cost virus detection method.",
+  "subtopics": [
+    {
+      "title": "Introduction to Mosquito-Borne Diseases",
+      "description": "Mosquitoes as the deadliest animal, transmitting diseases like malaria and dengue fever. Focus on Ross River virus in Australia."
+    },
+    {
+      "title": "Research Question",
+      "description": "Investigating why certain areas have higher rates of mosquito-borne diseases and identifying environmental factors contributing to disease transmission.",
+      "children": [
+        {
+          "title": "Environmental Factors",
+          "description": "Density of human housing, biodiversity of mammals, and ratio of green space to buildings."
+        }
+      ]
+    },
+    {
+      "title": "Novel Virus Detection Method",
+      "description": "Using virus-preserving cards coated in honey to attract mosquitoes and detect viruses.",
+      "children": [
+        {
+          "title": "Trap Development",
+          "description": "Creating traps from recycled materials (milk cartons, pantyhose, paper clips) for broad-scale virus surveys.",
+          "children": [
+            {
+              "title": "Cost-Effectiveness",
+              "description": "Traps costing less than $1.00 each and reusable for the whole season."
+            }
+          ]
+        },
+        {
+          "title": "Virus Identification",
+          "description": "Detecting Ross River virus, Barmah Forest virus, and Stratford virus (new to South Australia)."
+        }
+      ]
+    },
+    {
+      "title": "Impact and Applications",
+      "description": "Potential for public health officials to implement the technique for surveillance in other regions and countries, especially in economically impoverished areas.",
+      "children": [
+        {
+          "title": "Global Health Implications",
+          "description": "Providing a low-budget method for virus surveillance and spatial analysis to help countries with limited resources combat mosquito-borne diseases."
+        }
+      ]
+    }
+  ]
+}

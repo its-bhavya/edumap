@@ -1,0 +1,55 @@
+{
+  "central_topic": "The French Revolution",
+  "subtopics": [
+    {
+      "title": "Significance of the French Revolution",
+      "description": "The French Revolution was more important than other revolutions of its time due to France's size, power, and population."
+    },
+    {
+      "title": "Social Revolution",
+      "description": "Various social groups participated in the revolution, including women, Sans Colotte, peasants, and the bourgeoisie, all united by the goal of freedom.",
+      "children": [
+        {
+          "title": "Social Groups Involved",
+          "description": "Women, Sans Colotte, peasants, and the bourgeoisie."
+        },
+        {
+          "title": "Shared Goal",
+          "description": "Freedom or death."
+        }
+      ]
+    },
+    {
+      "title": "Radical Nature",
+      "description": "The revolution was radical, marked by the executions of the royal family and approximately 50,000 people.",
+      "children": [
+        {
+          "title": "Executions",
+          "description": "Royal family and 50,000 people were executed."
+        }
+      ]
+    },
+    {
+      "title": "Universal Impact",
+      "description": "The ideas of the revolution spread throughout Europe, America, and Asia."
+    },
+    {
+      "title": "Stages of the French Revolution",
+      "description": "The classic stages include the Constitutional Monarchy, the First French Republic, and the Napoleonic stage.",
+      "children": [
+        {
+          "title": "Constitutional Monarchy",
+          "description": "First stage of the revolution."
+        },
+        {
+          "title": "First French Republic",
+          "description": "Second stage of the revolution."
+        },
+        {
+          "title": "Napoleonic Stage",
+          "description": "Final stage of the revolution."
+        }
+      ]
+    }
+  ]
+}
