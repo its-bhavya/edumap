@@ -51,7 +51,9 @@ def extract_json(req: TranscriptRequest):
         data = {"central_topic": result.central_topic, "subtopics": subtopics}
 
         os.makedirs("data/json", exist_ok=True)
-        path = f"data/json/{result.central_topic}.json"
+        json_name = result.central_topic
+        json_name = json_name.replace(" ","-")
+        path = f"data/json/{json_name}.json"
         with open(path, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=2)
 
