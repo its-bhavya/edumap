@@ -51,11 +51,13 @@
 ```bash
 git clone https://github.com/yourname/edumap.git
 cd edumap
+```
 
 2. **Install Dependencies**
 
 ```bash
  pip install -r requirements.txt
+```
 
 3. **Install Graphviz**
 
@@ -68,14 +70,15 @@ brew install graphviz
 
 # Windows (use choco or installer from [official site](https://graphviz.org/download/))
 choco install graphviz
+```
 
-4. Setup Environment Variable with Gemini API Key
+4. **Setup Environment Variable with Gemini API Key**
 
 Create a .env file:
 ```bash
 GOOGLE_API_KEY=your_gemini_key
-
-## ▶Running the App
+```
+## Running the App
 
 1. **Start the FastAPI backend (DSPy agent):**
 
