@@ -3,7 +3,7 @@ from pydub import AudioSegment
 import os
 import tempfile
 
-model = whisper.load_model("tiny")  # or "base", "small", etc.
+model = whisper.load_model("tiny")  
 
 def split_audio(path, chunk_length_ms=30_000):
     audio = AudioSegment.from_file(path)
@@ -20,7 +20,7 @@ def transcribe_chunks(chunk_paths):
     for chunk_path in chunk_paths:
         result = model.transcribe(chunk_path)
         full_transcript += result["text"].strip() + " "
-        os.remove(chunk_path)  # Clean up
+        os.remove(chunk_path)  
     return full_transcript.strip()
 
 def transcribe(audio_path):
