@@ -39,14 +39,12 @@ if file:
         import torch
         transcription = transcribe(file)
         st.markdown("### Audio Transcript")
-        st.markdown('---')
         st.write(transcription)
         save_to_data(file_name, transcription)
 
 if text_file:
     transcription = text_file
     st.markdown("### Entered text")
-    st.markdown('---')
     st.write(transcription)
 
 if transcription:
