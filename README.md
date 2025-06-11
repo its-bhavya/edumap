@@ -4,7 +4,7 @@
 - **Whisper** for transcription
 - **DSPy agents** for semantic structure extraction
 - **Graphviz** for mindmap generation
-- 🖥**Streamlit** for an interactive UI
+- **Streamlit** for an interactive UI
 
 ---
 
