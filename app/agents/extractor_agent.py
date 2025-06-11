@@ -9,11 +9,9 @@ from dotenv import load_dotenv
 load_dotenv()
 api_key = os.getenv("GOOGLE_API_KEY")
 
-# Configure LM once, in this service
 lm = dspy.LM("gemini/gemini-2.0-flash", api_key=api_key)
 dspy.configure(lm=lm)
 
-# DSPy definitions
 class StructureExtractionSignature(dspy.Signature):
     transcript = dspy.InputField(desc="The full transcript of a lecture or explanation.")
     central_topic = dspy.OutputField(desc="The central concept of the transcript.")
