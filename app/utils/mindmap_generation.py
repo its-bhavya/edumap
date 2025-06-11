@@ -39,6 +39,7 @@ def generate_mindmap(file_path):
     add_subtopics(central_id, data['subtopics'], count=[1])
 
     # Save and render
+    base_name = base_name.replace(" ", "-")
     dot.render(filename=base_name, directory=output_dir, cleanup=True)
     print(f"Mindmap saved to: {os.path.join(output_dir, base_name)}.png")
     return dot
