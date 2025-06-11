@@ -12,8 +12,9 @@
 
 ![Screenshot 2025-06-11 153413](https://github.com/user-attachments/assets/a6f232de-ca08-4b40-96ba-92b2fe5499f6)
 
-![Screenshot 2025-06-11 153459](https://github.com/user-attachments/assets/15a5b36e-844f-4971-9090-68de4f1dabd1)
+![Screenshot 2025-06-11 154549](https://github.com/user-attachments/assets/0c01cc0b-6e60-46aa-9e30-6e2ff9244ba3)
 
+![The-French-Revolution](https://github.com/user-attachments/assets/dff7f14a-401d-4664-9846-5061f4fdb579)
 
 ## Features
 
