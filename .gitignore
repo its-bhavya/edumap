@@ -8,3 +8,4 @@ data/audio/*
 data/json/*
 data/transcripts/*
 data/mindmaps/*
+secrets.toml

@@ -3,6 +3,7 @@ import requests
 import tempfile
 import os
 
+st.set_page_config(layout="wide")
 st.markdown(
     """
     <style>
