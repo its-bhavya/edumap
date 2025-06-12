@@ -9,7 +9,7 @@ def escape_label(text):
 
 def generate_mindmap(file_path):
     base_name = os.path.splitext(os.path.basename(file_path))[0]
-    output_dir = os.path.join("data", "mindmaps")
+    output_dir = "backend/data/mindmaps"
     os.makedirs(output_dir, exist_ok=True)
 
     with open(file_path, 'r', encoding='utf-8') as f:

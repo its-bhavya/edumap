@@ -1,0 +1,73 @@
+{
+  "central_topic": "Ancient Roman Life and History",
+  "subtopics": [
+    {
+      "title": "Gladiators",
+      "description": "Information about gladiatorial combat, including their social status, guilds, and the frequency of death in fights.",
+      "children": [
+        {
+          "title": "Gladiator Guilds",
+          "description": "The organization of gladiators into guilds that provided support for their families."
+        },
+        {
+          "title": "Gladiator Origins",
+          "description": "The changing demographics of gladiators from enslaved people to freemen seeking fame and fortune."
+        }
+      ]
+    },
+    {
+      "title": "Roman Clothing",
+      "description": "Details about typical Roman attire, including the toga, silk dresses, and laundry practices.",
+      "children": [
+        {
+          "title": "Togas",
+          "description": "The ceremonial use of togas by male Roman citizens."
+        },
+        {
+          "title": "Silk Dresses",
+          "description": "The popularity of flimsy Chinese silk dresses among upper-class Roman women."
+        },
+        {
+          "title": "Laundry Practices",
+          "description": "The use of urine as a laundry detergent in ancient Rome."
+        }
+      ]
+    },
+    {
+      "title": "Roman Food and Drink",
+      "description": "Insights into Roman culinary habits, including the use of vomitoria, vegetarianism, and popular condiments.",
+      "children": [
+        {
+          "title": "Wanitoria",
+          "description": "The misconception of wanitoria as rooms for vomiting after overeating."
+        },
+        {
+          "title": "Pythagorean Diet",
+          "description": "The vegetarian beliefs of the Pythagoreans."
+        },
+        {
+          "title": "Garum",
+          "description": "The popularity of garum, a sauce made from fermented fish guts."
+        }
+      ]
+    },
+    {
+      "title": "The Fall of the Roman Empire",
+      "description": "Discussion about the complexities of the Roman Empire's decline and its division into Eastern and Western halves.",
+      "children": [
+        {
+          "title": "Division of the Empire",
+          "description": "The split of the Roman Empire into Eastern and Western halves."
+        },
+        {
+          "title": "Overthrow of Romulus Augustulus",
+          "description": "The overthrow of the last Western Roman Emperor in 476 CE."
+        },
+        {
+          "title": "Byzantine Empire",
+          "description": "The continuation of the Roman Empire in the East as the Byzantine Empire."
+        }
+      ]
+    }
+  ]
+}

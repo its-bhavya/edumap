@@ -1,2 +1,10 @@
+.venv/
+__pycache__/
+*.pyc
 .env
-.venv
+*.log
+*.lock
+data/audio/*
+data/json/*
+data/transcripts/*
+data/mindmaps/*
