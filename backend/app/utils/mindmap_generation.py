@@ -17,7 +17,7 @@ def generate_mindmap(file_path):
 
     dot = Digraph(comment=f"Mindmap: {data['central_topic']}", format='png')
     dot.attr(rankdir='LR', bgcolor='white')
-    dot.attr('node', shape='box', style='filled', fillcolor='#f0f8ff', fontsize='10')
+    dot.attr('node', shape='box', style='filled', fillcolor='#f0f8ff', fontsize='10', fontname="Arial")
 
     def add_subtopics(parent_id, subtopics, count):
         for i, topic in enumerate(subtopics):
@@ -33,7 +33,7 @@ def generate_mindmap(file_path):
 
     # Add central node
     central_id = "central"
-    dot.node(central_id, f"<<b>{escape_label(data['central_topic'])}</b>>", shape='ellipse', fillcolor="#ffebcd", fontsize='12')
+    dot.node(central_id, f"<<b>{escape_label(data['central_topic'])}</b>>", shape='ellipse', fillcolor="#ffebcd", fontsize='13', fontname="Arial")
 
     # Add subtopics recursively
     add_subtopics(central_id, data['subtopics'], count=[1])
