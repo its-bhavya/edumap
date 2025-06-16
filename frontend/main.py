@@ -36,8 +36,12 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+try:
+    API_BASE = st.secrets["API_BASE"] 
+except st.errors.StreamlitSecretNotFoundError:
+    API_BASE = "http://localhost:8000"
 
-API_BASE = st.secrets["API_BASE"]
+
 os.environ["STREAMLIT_DISABLE_WATCHDOG_WARNINGS"] = "1"
 
 
@@ -101,8 +105,11 @@ st.markdown("### :material/automation: Generate Mindmap")
 if st.session_state.transcript and st.button("View"):
     with st.spinner("Rendering mindmap..."):
         res = requests.post(f"{API_BASE}/extract", json={"transcript": st.session_state.transcript})
+        
         if res.status_code == 200:
+            st.json(res.json(), expanded=False)
             central_topic = res.json()["central_topic"]
+
             image_url = f"{API_BASE}/mindmap/{central_topic.replace(' ', '-')}"
             st.image(image_url, caption=f"Mindmap: {central_topic}", use_container_width=True)
         else:
