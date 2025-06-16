@@ -37,7 +37,7 @@ st.markdown(
 )
 
 
-API_BASE = "http://localhost:8000"
+API_BASE = st.secrets["API_BASE"]
 os.environ["STREAMLIT_DISABLE_WATCHDOG_WARNINGS"] = "1"
 
 
