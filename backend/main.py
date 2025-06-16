@@ -2,11 +2,11 @@ from fastapi import FastAPI, UploadFile, File
 from fastapi.responses import FileResponse
 from pydantic import BaseModel
 from dotenv import load_dotenv
-import os, shutil, json, re, sys
+import os, shutil, json, re, sys, time
 
 sys.path.insert(0, os.path.abspath(os.path.dirname(__file__)))
 
-from app.utils.transcriber import transcribe, save_to_data
+from app.utils.transcriber import transcribe
 from app.utils.mindmap_generation import generate_mindmap
 from app.agents.extractor_agent import MindmapExtractor
 
@@ -22,16 +22,21 @@ DATA_DIR = "backend/data"
 
 @app.post("/transcribe")
 def transcribe_audio(file: UploadFile = File(...)):
+    start = time.time()
     os.makedirs(os.path.join(DATA_DIR, "audio"), exist_ok=True)
     audio_path = os.path.join(DATA_DIR, "audio", file.filename)
-    
+
     with open(audio_path, "wb") as f:
         shutil.copyfileobj(file.file, f)
+    print("File saved in:", time.time() - start)
 
+    start_transcribe = time.time()
     text = transcribe(audio_path)
-    save_to_data(file.filename, text)
-    return {"transcript": text}
+    print("Transcription done in:", time.time() - start_transcribe)
 
+    print("Total time taken:", time.time() - start)
+
+    return {"transcript": text}
 
 class TranscriptRequest(BaseModel):
     transcript: str
