@@ -1,7 +1,7 @@
 import streamlit as st
 import requests
 import tempfile
-import os
+import os, io
 
 st.set_page_config(layout="wide")
 st.markdown(
@@ -52,37 +52,35 @@ if "transcript" not in st.session_state:
 with tab1:
     uploaded_file = st.file_uploader("Upload an MP3/WAV file", type=["mp3", "wav"])
     if uploaded_file:
-        st.audio(uploaded_file)
         if st.button("Transcribe Uploaded Audio"):
             with st.spinner("Transcribing uploaded audio..."):
-                with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as tmp:
-                    tmp.write(uploaded_file.read())
-                    tmp.flush()
-                    tmp.seek(0)
-                    res = requests.post(f"{API_BASE}/transcribe", files={"file": tmp})
-                    os.remove(tmp.name)
+                files = {"file": (uploaded_file.name, uploaded_file, uploaded_file.type)}
+                res = requests.post(f"{API_BASE}/transcribe", files=files)
 
-                if res.status_code == 200:
-                    st.session_state.transcript = res.json()["transcript"]
-                else:
-                    st.error("Transcription failed.")
-                    st.json(res.json())
+            if res.status_code == 200:
+                st.session_state.transcript = res.json()["transcript"]
+                st.success("Transcription complete.")
+            else:
+                st.error("Transcription failed.")
+                st.json(res.json())
 
 with tab2:
     recorded_file = st.audio_input("Record your lecture.")
     if recorded_file:
-        st.audio(recorded_file)
+        audio_bytes = recorded_file.read()
+        st.audio(audio_bytes)
+
         if st.button("Transcribe Recorded Audio"):
             with st.spinner("Transcribing recorded audio..."):
-                with tempfile.NamedTemporaryFile(suffix=".wav", delete=False) as tmp:
-                    tmp.write(recorded_file.read())
-                    tmp.flush()
-                    tmp.seek(0)
-                    res = requests.post(f"{API_BASE}/transcribe", files={"file": tmp})
-                    os.remove(tmp.name)
+                try:
+                    files = {"file": ("recording.wav", io.BytesIO(audio_bytes), "audio/wav")}
+                    res = requests.post(f"{API_BASE}/transcribe", files=files)
+                except Exception as e:
+                    st.error(f"Transcription request failed: {e}")
 
                 if res.status_code == 200:
                     st.session_state.transcript = res.json()["transcript"]
+                    print(st.session_state.transcript)
                 else:
                     st.error("Transcription failed.")
                     st.json(res.json())
