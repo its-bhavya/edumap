@@ -107,7 +107,7 @@ if st.session_state.transcript and st.button("View"):
         res = requests.post(f"{API_BASE}/extract", json={"transcript": st.session_state.transcript})
         
         if res.status_code == 200:
-            st.json(res.json(), expanded=False)
+            
             central_topic = res.json()["central_topic"]
 
             image_url = f"{API_BASE}/mindmap/{central_topic.replace(' ', '-')}"
