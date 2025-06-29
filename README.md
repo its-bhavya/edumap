@@ -1,50 +1,40 @@
-# EduMap — Audio to Mindmap using Agentic AI
+# EduMap — Audio to Mindmap with LLM-Powered Reasoning
 
-**EduMap** is an AI-powered tool that transforms lecture audio into structured, visual mindmaps. It uses:
-- **Whisper** for transcription
-- **DSPy agents** for semantic structure extraction
-- **Graphviz** for mindmap generation
-- **Streamlit** for an interactive UI
+**EduMap** is an AI-powered tool that transforms lecture audio into structured, visual mindmaps. 
 
+## Website
 
-## Demo
-![Screenshot 2025-06-11 153336](https://github.com/user-attachments/assets/230fe287-ec86-423e-94ba-6c24cebec15b)
+[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://edumap-ai.streamlit.app/)
 
-![Screenshot 2025-06-11 153413](https://github.com/user-attachments/assets/a6f232de-ca08-4b40-96ba-92b2fe5499f6)
+## Screenshots
 
-![Screenshot 2025-06-11 154549](https://github.com/user-attachments/assets/0c01cc0b-6e60-46aa-9e30-6e2ff9244ba3)
+![home-page](https://github.com/user-attachments/assets/a3a5c969-9d78-41ee-b396-31163fe1d41d)
+![upload-audio](https://github.com/user-attachments/assets/18045e90-c6ff-43c2-bcf0-6684b2277ba7)
+![transcription-ongoing](https://github.com/user-attachments/assets/87000186-f99e-4fdb-9bc2-3bef6db9fee1)
+![generated-transcript](https://github.com/user-attachments/assets/7185cae8-49a3-4e2f-8a33-664382234c10)
+![generated-mindmap](https://github.com/user-attachments/assets/8e2231de-28f7-420d-8215-b192130c6ee8)
 
-![The-French-Revolution](https://github.com/user-attachments/assets/dff7f14a-401d-4664-9846-5061f4fdb579)
-
-## Features
-
-1. Upload or record lecture audio  
-2. Get accurate transcripts using Whisper  
-3. Extract central topics and nested subtopics using DSPy agents  
-4. Visualize content as an interactive mindmap
-5.  Save all outputs (transcripts, JSON, PNG) automatically
 
 ## How It Works
-1. **Transcribe Audio**: Uses OpenAI Whisper to convert MP3/WAV into text
-2. **Extract Concepts**: A DSPy `MindmapExtractor` agent identifies central topics & subtopics
+1. **Transcribe Audio**: Uses Assembly AI to convert uploaded or recorded MP3/WAV into text
+2. **Extract Concepts**: A DSPy `MindmapExtractor` module identifies central topics & subtopics
 3. **Generate Mindmap**: JSON structure is turned into a mindmap using Graphviz
 4. **Render & Display**: Visual shown in real-time via Streamlit
 
 ## Technologies Used
 | Layer            | Tool/Library                 |
 |------------------|------------------------------|
-| Transcription     | [OpenAI Whisper](https://github.com/openai/whisper) |
+| Transcription     | [Assembly AI](https://github.com/AssemblyAI/assemblyai-python-sdk) |
 | Agent Framework   | [DSPy](https://github.com/stanfordnlp/dspy)         |
 | Visualization     | Graphviz (`graphviz.Digraph`)                        |
-| Audio Processing  | PyDub                                              |
 | UI                | Streamlit                                          |
-| API Server        | FastAPI (for extraction endpoint)                   |
+| API Server        | FastAPI (for extraction endpoint) + Render (Deployment)                 |
 
 ## Installation
 1. **Clone this repo**
 
 ```bash
-git clone https://github.com/yourname/edumap.git
+git clone https://github.com/its-bhavya/edumap.git
 cd edumap
 ```
 
@@ -72,17 +62,18 @@ choco install graphviz
 Create a .env file:
 ```bash
 GOOGLE_API_KEY=your_gemini_key
+ASSEMBLY_API_KEY=your_assembly_api_key
 ```
 
-## Running the App
-1. **Start the FastAPI backend (DSPy agent):**
-```bash
-uvicorn app.agents.extractor_agent:app --reload
-````
-2. **Start the Streamlit frontend:**
-```bash
-streamlit run main.py
-```
-3. **Open the app in your browser:**
-Visit [http://localhost:8501](http://localhost:8501)
+5. **Run the App**
+
+a. **Start the FastAPI backend (DSPy agent):**
+   ```bash
+   uvicorn backend.main:app --reload
+   ````
+b. **Start the Streamlit frontend:**
+   ```bash
+   streamlit run frontend/main.py
+   ```
+
 
