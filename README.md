@@ -25,7 +25,7 @@
 | Layer            | Tool/Library                 |
 |------------------|------------------------------|
 | Transcription     | [Assembly AI](https://github.com/AssemblyAI/assemblyai-python-sdk) |
-| Agent Framework   | [DSPy](https://github.com/stanfordnlp/dspy)         |
+| LLM Based Extraction   | [Gemini](https://aistudio.google.com/prompts/new_chat), [DSPy](https://github.com/stanfordnlp/dspy)         |
 | Visualization     | Graphviz (`graphviz.Digraph`)                        |
 | UI                | Streamlit                                          |
 | API Server        | FastAPI (for extraction endpoint) + Render (Deployment)                 |
@@ -67,7 +67,7 @@ ASSEMBLY_API_KEY=your_assembly_api_key
 
 5. **Run the App**
 
-a. **Start the FastAPI backend (DSPy agent):**
+a. **Start the FastAPI backend (DSPy Extractor):**
    ```bash
    uvicorn backend.main:app --reload
    ````
