@@ -25,7 +25,7 @@
 | Layer            | Tool/Library                 |
 |------------------|------------------------------|
 | Transcription     | [Assembly AI](https://github.com/AssemblyAI/assemblyai-python-sdk) |
-| LLM Based Extraction   | [Gemini], [DSPy](https://github.com/stanfordnlp/dspy)         |
+| LLM Based Extraction   | [Gemini](https://aistudio.google.com/prompts/new_chat), [DSPy](https://github.com/stanfordnlp/dspy)         |
 | Visualization     | Graphviz (`graphviz.Digraph`)                        |
 | UI                | Streamlit                                          |
 | API Server        | FastAPI (for extraction endpoint) + Render (Deployment)                 |
