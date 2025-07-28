@@ -20,6 +20,10 @@ extractor = MindmapExtractor()
 
 DATA_DIR = "backend/data"
 
+@app.get("/")
+def root():
+    return {"staus":"ok"}
+
 @app.post("/transcribe")
 def transcribe_audio(file: UploadFile = File(...)):
     start = time.time()
